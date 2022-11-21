@@ -43,7 +43,7 @@ plot_black_white_pop()
 
 **Have black individuals been imprisoned at a higher rate than white individuals? If so, when?** Yes, black individuals have been imprisoned at a much higher rate than whites, most notably from the years 1980-1995. The visualization shows a dramatic increase, starting in 1980, of blacks being imprisoned. There is a very steep increase for about 15 years, but then I notice a decline in black imprisonment from 1995 all the way to 2017. This is likely equality efforts. Now that I know there is a bias in the prison populations as it comes to race, I will explore geo-locations as it just relates to blacks, in order to see **where** they are disadvantaged. 
 
-## Section 6: 
+## Section 6: Black Prison Populations by County in the US.
 ```{r s6, echo=FALSE, message=FALSE}
 library(maps)
 plot_1995_us() 
