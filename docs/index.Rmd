@@ -1,45 +1,53 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Bias in the U.S. Prison System"
+author: "Kunal Srivastava"
+date: '2022-11-20'
 output: html_document
 ---
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE}
-source("../source/a4-helpers.R")
-source("../source/analysis.R")
+source("/Volumes/sfkunal/INFO201/assignments/a4-sfkunal/source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+In this data exploration, I work with U.S. prison data. This data has been mainly collected from sources like the Census of Jails (COJ) and the National Corrections Reporting Program (NCRP). The data set also includes population estimates and geographic information. I want to explore inequality in this analysis, because I already know the U.S. prison system is broken in terms of fairness. Minorities are prosecuted at a higher rate due to biases. I look to examine 4-5 variables in this data set. 
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
+## Section 1: Introduction 
+Ever since the abolishment of slavery in the 1960's, America has been on a path of progress to equality and equity as it comes to minorities, and others who are at marginalized disadvantages, like members of the LGBTQ+ community. The data set I explore in the analysis is a record of US Prison Data, in which the goal is to find and display evidence of patterns of inequality. This relates a lot to current social issues in America, where the fight for equality is just as strong. Direct and indirect stakeholders of this data include actual prison inmates, prison staff, the government, and even the U.S. taxpayer, who funds the prisons. In my report, I aim to answer questions like finding statistical discrepancies in quantitative data by race, location, etc. 
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
+## Section 2: Data Summary 
+Looking through the data, I am really interested in the population columns as it comes to race. My idea is to analyze these population columns by race with different methods to see if there are any equality discrepancies. I expect the black population percentage to be higher than most, because I already know that is a current social bias in the U.S. Prison System. In this data set, the total number of observation (entries) was **`r get_observations()`**. Over all the male prisoners over all years, the average percentage of black male prisoners was **`r get_black_pct()`%**, the average percentage of latin male prisoners was **`r get_latin_pct()`%**, and the average percentage of white male prisoners was **`r get_white_pct()`%**. These initial values show some clear inequality in that there are much more black men getting incarcerated than other men. As I continue with this analysis, my next idea is to break my discoveries up by geolocation, county, or add in other numerical data from other columns for augmented insights. 
 
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
 
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
+## Section 3: Growth of the U.S. Prison Population
+
+```{r s3, echo=FALSE, message=FALSE}
+plot_jail_pop_for_us()
 ```
 
-## Introduction 
-[TODO]
+From looking at this visualization, it is clear that the population in U.S. Prisons has shot up from 1970 to now, very steadily. The bar plot shows a trend that looks like it is not slowing down at all, and still on a fairly linear path. I find this really interesting given all the attention the U.S. Prison System is getting right now, I would have expected at least a small decline. **I wonder whether this chart would look the same if it was categorized by ethnicity.**
 
-## Data Summary 
-[TODO]
+## Section 4: Growth of Prison Population by State 
 
-[TODO ... other sections ... See Canvas for details]
+```{r s4, echo=FALSE, message=FALSE}
+plot_pop_by_states(c("WA", "CA", "TX", "NY"))
+```
 
-_All the very best with your work!_
+I chose the states CA, NY, TX, and WA because all of them (except WA, which we live in) have very high populations in comparison to the rest of the U.S. I thought that this would give me more clear indications. This visualization carries very similar shape to Figure 2--each line appears to greatly increase up around 1990-1995. In the next visualization, I will explore this by race, and then after that, I will explore this by geo-location.
+
+## Section 5: Growth of White Vs. Black Prison Populations
+
+```{r s5, echo=FALSE, message=FALSE}
+plot_black_white_pop() 
+```
+
+**Have black individuals been imprisoned at a higher rate than white individuals? If so, when?** Yes, black individuals have been imprisoned at a much higher rate than whites, most notably from the years 1980-1995. The visualization shows a dramatic increase, starting in 1980, of blacks being imprisoned. There is a very steep increase for about 15 years, but then I notice a decline in black imprisonment from 1995 all the way to 2017. This is likely equality efforts. Now that I know there is a bias in the prison populations as it comes to race, I will explore geo-locations as it just relates to blacks, in order to see **where** they are disadvantaged. 
+
+## Section 6: 
+```{r s6, echo=FALSE, message=FALSE}
+library(maps)
+plot_1995_us() 
+```
+
+**Where are black prison populations the highest?** Looking at the visualization, black prison populations are the highest in states like California and Washington. The heat-map shows a large blue area in those states, signifying a large black prison population. I assume that the reason CA and TX are the highest is simply due to their population, but I think this visualization reveals more. Many, many counties on the southeast coast have large black prison populations. This could mean that there is inherent bias in those areas specifically, and therefore more education about equality could be directed towards those areas. 
 
